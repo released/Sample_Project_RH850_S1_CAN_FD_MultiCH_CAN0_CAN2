@@ -3,13 +3,13 @@ Sample_Project_RH850_S1_CAN_FD_MultiCH_CAN0_CAN2
 
 update @ 2025/08/25
 
-1. initial RH850/F1KM-S1 LQFP 64 , to test below function 
+1. initial __RH850/F1KM-S1 LQFP 64__ , to test below function 
 
-- UART : RX:P0_3 , TX:P0_2
+- __UART : RX:P0_3 , TX:P0_2__
 
-- CAN0 : RX:P0_1 (polling , no RX rule , accept all ID) , TX:P0_0 (polling)
+- __CAN0 : RX:P0_1 (polling , no RX rule , accept all ID) , TX:P0_0 (polling)__
 
-- CAN2 : RX:P0_5 (polling , no RX rule , accept all ID) , TX:P0_4 (polling)
+- __CAN2 : RX:P0_5 (polling , no RX rule , accept all ID) , TX:P0_4 (polling)__
 
 	- use #define ENABLE_MULTI_CAN_CH , to enable multi CH setting( ex : CAN0 , CAN2 )
 

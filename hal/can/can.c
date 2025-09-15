@@ -193,6 +193,27 @@ const char* tbl_can_dlc[] =
     "CAN_DLC_64BYTE",
 };
 
+
+const unsigned char tbl_can_dlc_bytes[16] =
+{
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    12,
+    16,
+    20,
+    24,
+    32,
+    48,
+    64,
+};
+
 // filter ID : RX_RRT0_ID ~ RX_RRT9_ID
 const CAN_RX_RULE_TABLE_T tbl_can_bus_rx_rule_ch0[CAN_RX_RULE_CURRENT_AMOUNT] = 
 {
@@ -2328,6 +2349,27 @@ void R_CANFD_Init(void)
 
 }
 
+unsigned char can_payload_calculate(unsigned char dlc)
+{
+
+    /*
+        dlc = 8 , i = 0,1
+        dlc = 16 , i = 0,1,2,3
+        dlc = 24 , i = 0,1,2,3,4,5
+        dlc = 32 , i = 0,1,2,3,4,5,6,7
+        dlc = 48 , i = 0~11
+        dlc = 64 , i = 0~15
+    */
+    unsigned char len = 0;
+
+    len = dlc >> 2;
+    if (dlc%4 != 0)
+    {
+        len++;
+    }
+    return len;
+}
+
 
 void can_reg_dump_log(void)
 {
@@ -2815,6 +2857,7 @@ signed char can_fd_receive_buffer_decode(CAN_REG_TYP * can, CAN_RX_FIFO_BUFER_NU
     }
     #endif
 
+    #if defined (ENABLE_COMPLEX_LOG)
     tiny_printf("\r\n");
     tiny_printf("-----receive_buffer:0x%04X,0x%02X,(%s)-----\r\n",q_number,rfi_number,tbl_can_fifo_buffer_num[rfi_number]);
     tiny_printf("-----receive_buffer:0x%08X-----\r\n",rmnd0[0].UINT32);
@@ -2908,6 +2951,31 @@ signed char can_fd_receive_buffer_decode(CAN_REG_TYP * can, CAN_RX_FIFO_BUFER_NU
     }
 
     tiny_printf("\r\n");   
+    #else
+    /*
+        can id
+        RMDF0_0
+        q
+        dlc
+    */
+    CAN_REG_CLR(can->CFDRMND0.UINT32,CAN_REG_BIT0,0xFFFFFFFF);
+    CAN_REG_CLR(can->CFDRMND1.UINT32,CAN_REG_BIT0,0xFFFFFFFF);
+    CAN_REG_CLR(can->CFDRMND2.UINT32,CAN_REG_BIT0,0xFFFFFFFF);
+    
+    re_val = CAN_REG_READ(rmid0[q_number].UINT32,CAN_REG_BIT0,0x1FFFFFFFU);  //RMID
+    tiny_printf("%03X ",re_val);
+
+    re_val = CAN_REG_READ(rmptr0[q_number].UINT32,CAN_REG_BIT28,0xFU);      //RMDLC
+    re_val = can_payload_calculate(tbl_can_dlc_bytes[re_val]);    
+    for(i = 0;i < re_val ; i++)
+    {
+        tiny_printf("%02X ", (rmdf0_0[i+q_number].UINT32) & 0xFF );
+        tiny_printf("%02X ", (rmdf0_0[i+q_number].UINT32>>8) & 0xFF );
+        tiny_printf("%02X ", (rmdf0_0[i+q_number].UINT32>>16) & 0xFF );
+        tiny_printf("%02X ", (rmdf0_0[i+q_number].UINT32>>24) & 0xFF );
+    }
+    tiny_printf("\r\n");
+    #endif
 
     return 0;
 }
@@ -2929,6 +2997,7 @@ void can_fd_receive_fifo_buffer_decode(CAN_REG_TYP * can, CAN_RX_FIFO_BUFER_NUMB
 
     unsigned char* s = NULL;
 
+    #if defined (ENABLE_COMPLEX_LOG)
     tiny_printf("-----receive_fif0_buffer-----\r\n");
 
     /*******************************/
@@ -3020,6 +3089,28 @@ void can_fd_receive_fifo_buffer_decode(CAN_REG_TYP * can, CAN_RX_FIFO_BUFER_NUMB
     }
 
     // tiny_printf("\r\n"); 
+    #else
+    /*
+        can id
+        RFDF0_0
+        q
+        dlc
+    */
+    re_val = CAN_REG_READ(rfid0[q_number].UINT32,CAN_REG_BIT0,0x1FFFFFFFU);  //RMID
+    tiny_printf("%03X ",re_val);
+
+    re_val = CAN_REG_READ(rfptr0[q_number].UINT32,CAN_REG_BIT28,0xFU);      //RMDLC
+    re_val = can_payload_calculate(tbl_can_dlc_bytes[re_val]);    
+    for(i = 0;i < re_val ; i++)
+    {
+        tiny_printf("%02X ", (rfdf0_0[i+q_number].UINT32) & 0xFF );
+        tiny_printf("%02X ", (rfdf0_0[i+q_number].UINT32>>8) & 0xFF );
+        tiny_printf("%02X ", (rfdf0_0[i+q_number].UINT32>>16) & 0xFF );
+        tiny_printf("%02X ", (rfdf0_0[i+q_number].UINT32>>24) & 0xFF );
+    }
+    tiny_printf("\r\n");
+    #endif
+
 }
 
 void can_fd_receive_fifo_buffer_status(CAN_REG_TYP * can, CAN_RX_FIFO_BUFER_NUMBER_e rfi_number)
@@ -3042,6 +3133,7 @@ void can_fd_receive_fifo_buffer_status(CAN_REG_TYP * can, CAN_RX_FIFO_BUFER_NUMB
     CAN_REG_CLR(can->CFDRMND1.UINT32,CAN_REG_BIT0,0xFFFFFFFF);
     CAN_REG_CLR(can->CFDRMND2.UINT32,CAN_REG_BIT0,0xFFFFFFFF);  
 
+    #if defined (ENABLE_COMPLEX_LOG)
     if(flag)
     {        
         tiny_printf("-----receive_fifo_buffer_status-----\r\n");
@@ -3083,6 +3175,7 @@ void can_fd_receive_fifo_buffer_status(CAN_REG_TYP * can, CAN_RX_FIFO_BUFER_NUMB
     
         // CAN_REG_CLR(can->CFDRMND0.UINT32,CAN_REG_BIT0,CAN_REG_LENGTH_1);
     }
+    #endif
 }
 
 void can_fd_loop_process(void)

@@ -1,6 +1,20 @@
 # Sample_Project_RH850_S1_CAN_FD_MultiCH_CAN0_CAN2
 Sample_Project_RH850_S1_CAN_FD_MultiCH_CAN0_CAN2
 
+
+update @ 2025/09/15
+
+1. Add define : ENABLE_COMPLEX_LOG , to enable more log for monitor when receive CAN RX
+
+2. if disable define : ENABLE_COMPLEX_LOG , will display minimum log as below 
+
+log display below 
+![image](https://github.com/released/Sample_Project_RH850_S1_CAN_FD_MultiCH_CAN0_CAN2/blob/main/simple_tiny_printf.jpg)
+
+UART LOG spend timing : 2.85 ms
+![image](https://github.com/released/Sample_Project_RH850_S1_CAN_FD_MultiCH_CAN0_CAN2/blob/main/simple_tiny_printf2.jpg)
+
+
 update @ 2025/08/25
 
 1. initial __RH850/F1KM-S1 LQFP 64__ , to test below function 

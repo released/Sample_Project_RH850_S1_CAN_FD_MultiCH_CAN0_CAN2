@@ -6,6 +6,8 @@
 #define ENABLE_MULTI_CAN_CH
 // #define ENABLE_TDC
 
+#define ENABLE_COMPLEX_LOG
+
 // #define CAN_USE_RX_RULE
 #define CAN_RX_POLLING
 // #define CAN_RX_INTERRUPT
@@ -745,7 +747,8 @@ extern void can_tx_buf_data_multi_send(CAN_REG_TYP * can,
 extern void can_rx_fifo_buf_int_check(CAN_REG_TYP * can,
                                         CAN_BUS_HANDLE *p,
                                         CAN_RX_FIFO_BUFER_NUMBER_e rfi_number);
-
+                                      
+unsigned char can_payload_calculate(unsigned char dlc);
 void can_reg_dump_log(void);
 
 unsigned char can_global_error_interrupt_cbk(CAN_REG_TYP * can);

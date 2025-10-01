@@ -1,10 +1,15 @@
-#define CAN_REG_TYP_HANDLE
+#ifndef __CAN_H__
+#define __CAN_H__
 
 #include "iodefine.h"
 #include "can_user.h"
 
 #define ENABLE_MULTI_CAN_CH
 // #define ENABLE_TDC
+
+#define ENABLE_CAN2_ERR_INTERRUPT
+#define ENABLE_CAN0_ERR_INTERRUPT
+// #define ENABLE_GLOBAL_ERR_INTERRUPT
 
 #define ENABLE_COMPLEX_LOG
 
@@ -751,7 +756,9 @@ extern void can_rx_fifo_buf_int_check(CAN_REG_TYP * can,
 unsigned char can_payload_calculate(unsigned char dlc);
 void can_reg_dump_log(void);
 
+unsigned char can_channel_error_interrupt_cbk(CAN_REG_TYP * can,CAN_CHANNEL_SEL_e channel);
 unsigned char can_global_error_interrupt_cbk(CAN_REG_TYP * can);
+
 void can_rx_buffer_set(CAN_REG_TYP * can);
 
 signed char can_fd_receive_buffer_decode(CAN_REG_TYP * can, CAN_RX_FIFO_BUFER_NUMBER_e rfi_number);
@@ -761,4 +768,4 @@ void can_fd_receive_fifo_buffer_status(CAN_REG_TYP * can, CAN_RX_FIFO_BUFER_NUMB
 void can_fd_loop_process(void);
 
 
-#undef CAN_REG_TYP_HANDLE
+#endif //__CAN_H__

@@ -1,3 +1,5 @@
+#ifndef __CAN_USER_H__
+#define __CAN_USER_H__
 
 #define PTR_UL_ADDR_RW(a)       *((unsigned long*)(a))
 #define PTR_UCH_ADDR_RW(a)      *((unsigned char*)(a))
@@ -61,10 +63,12 @@
 #define  CAN_REG_LENGTH_8 0xFF
 
 
-#define CAN_REG_SET(r,n,val) (r |= (((unsigned long)val)<<n))
-#define CAN_REG_CLR(r,n,val) (r &= (0xFFFFFFFF -(val<<n)))
+#define CAN_REG_SET(r,n,val)            (r |= (((unsigned long)val)<<n))
+#define CAN_REG_CLR(r,n,val)            (r &= (0xFFFFFFFF -(val<<n)))
 
-#define CAN_REG_READ(r,n,val) ((r &(val<<n))>>n)
+#define CAN_W0C_CLR1(REG, b)            do { (REG) = ~(1u << (b)); } while (0)
+
+#define CAN_REG_READ(r,n,val)           ((r &(val<<n))>>n)
 
 #define RS_CANFD_REG32(addr)            (*(volatile uint32_t *)(addr))
 #define RS_CANFD_REG32_CLR(addr,b)      (((*(volatile uint32_t *)(addr))) &= ~(1UL << (b)))
@@ -405,8 +409,5 @@ typedef struct
 }CAN_BUS_HANDLE;
 
 
-
-
-
-
+#endif //__CAN_USER_H__
 

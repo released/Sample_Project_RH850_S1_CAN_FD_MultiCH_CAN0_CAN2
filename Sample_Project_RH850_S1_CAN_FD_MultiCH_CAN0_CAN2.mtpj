@@ -1,9 +1,9 @@
-﻿<CubeSuiteProject PackageVersion="V8.13.00  [05 Dec 2024]">
-  <ProductVersion>9.13.00.00</ProductVersion>
+﻿<CubeSuiteProject PackageVersion="V8.14.00  [02 Jun 2025]">
+  <ProductVersion>9.14.00.00</ProductVersion>
   <Class Guid="68f4a651-b9cd-473b-a595-b00447132ffa">
     <Instance Guid="00000000-0000-0000-0000-000000000000">
       <FormatVersion>2.0</FormatVersion>
-      <FileVersion>9.13</FileVersion>
+      <FileVersion>9.14</FileVersion>
       <ProjectGuid>6aaa356a-3dc6-4897-a319-9f0b7797fcf6</ProjectGuid>
       <ProjectItemGuid>72e07859-08b3-42fc-9108-4dd620e758c1</ProjectItemGuid>
       <FileCategoryGuid>4750b19e-6567-4899-94db-8f6cffb395d2</FileCategoryGuid>
@@ -540,7 +540,7 @@
       <GeneralOptionResetVectorAddressPE14-DefaultValue />
       <GeneralOptionResetVectorAddressPE15-DefaultValue />
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8584455623875178869</TimeTagModified--0>
+      <TimeTagModified--0>-8584366851513903813</TimeTagModified--0>
       <BuildMode-0>DefaultBuild</BuildMode-0>
       <Memo-0 />
       <SetAllBuildModeValue-0>False</SetAllBuildModeValue-0>
@@ -574,7 +574,7 @@
       <DependencyFileExistCheckingType-0>Rebuild</DependencyFileExistCheckingType-0>
       <GeneralOptionOutputBitIOR-0>False</GeneralOptionOutputBitIOR-0>
       <GeneralOptionResetVectorAddressPE3-0 />
-      <GeneralOptionXcref-0>False</GeneralOptionXcref-0>
+      <GeneralOptionXcref-0>True</GeneralOptionXcref-0>
       <GeneralOptionResetVectorAddressPE4-0 />
       <GeneralOptionXobjPath-0>%BuildModeName%</GeneralOptionXobjPath-0>
       <GeneralOptionResetVectorAddressPE5-0 />
@@ -685,7 +685,7 @@
       <COptionInsertDbtagWithLabelParameters-DefaultValue />
       <COptionXmultiLevel-DefaultValue>Level0</COptionXmultiLevel-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8584494762776523053</TimeTagModified--0>
+      <TimeTagModified--0>-8584370089983391090</TimeTagModified--0>
       <COptionChangeMessageError-0>No</COptionChangeMessageError-0>
       <COptionG-0>True</COptionG-0>
       <COptionI-0>peripherals\port
@@ -703,7 +703,7 @@ hal\can
 </COptionI-0>
       <COptionLangC-0>C99</COptionLangC-0>
       <COptionMOrC-0>-c</COptionMOrC-0>
-      <COptionOsize-0>Default</COptionOsize-0>
+      <COptionOsize-0>AdvancedDebug</COptionOsize-0>
       <COptionPreCompileCommands-0 />
       <COptionXasmPath-0>False</COptionXasmPath-0>
       <COptionXcharacterSet-0>Auto</COptionXcharacterSet-0>
@@ -899,7 +899,7 @@ hal\can
       <LinkOptionLibraryLibMalloc-DefaultValue>False</LinkOptionLibraryLibMalloc-DefaultValue>
       <LinkOptionLibraryLibSetJmp-DefaultValue>False</LinkOptionLibraryLibSetJmp-DefaultValue>
       <IsLockedByUser>False</IsLockedByUser>
-      <TimeTagModified--0>-8584494762976354368</TimeTagModified--0>
+      <TimeTagModified--0>-8584366819070968559</TimeTagModified--0>
       <LinkOptionAllowOptimizeEntryBlock-0>False</LinkOptionAllowOptimizeEntryBlock-0>
       <LinkOptionCpu-0>False</LinkOptionCpu-0>
       <LinkOptionDebug-0>Debug</LinkOptionDebug-0>
@@ -911,7 +911,7 @@ hal\can
       <LinkOptionOptimize-0>None</LinkOptionOptimize-0>
       <LinkOptionOutputFolder-0>%BuildModeName%</LinkOptionOutputFolder-0>
       <LinkOptionStack-0>False</LinkOptionStack-0>
-      <LinkOptionStart-0>RESET/%ResetVectorPE1%,EIINTTBL.const/00000200,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data,privateData.const,privateData.data/00008000,.data.R,.bss,.stack.bss,privateData.bss/FEDE8000</LinkOptionStart-0>
+      <LinkOptionStart-0>RESET/%ResetVectorPE1%,EIINTTBL.const/00000200,.const,.INIT_DSEC.const,.INIT_BSEC.const,.text,.data,privateData.const,privateData.data/00008000,.data.R,.bss,.stack.bss,privateData.bss/FEDF0000</LinkOptionStart-0>
       <LinkOptionBinary-0 />
       <LinkOptionCompress-0>False</LinkOptionCompress-0>
       <LinkOptionCpuInformation-0 />
@@ -1795,9 +1795,9 @@ hal\can
       <DebuggerProperty-OptionalProperty-Register-UpdateDisplayInExecutionForPC>No</DebuggerProperty-OptionalProperty-Register-UpdateDisplayInExecutionForPC>
       <DebuggerProperty-OptionalProperty-Register-UpdateIntervalForPC>500</DebuggerProperty-OptionalProperty-Register-UpdateIntervalForPC>
       <DebuggerProperty-OptionalProperty-Memory-VerifyCheck>Yes</DebuggerProperty-OptionalProperty-Memory-VerifyCheck>
-      <DebuggerProperty-OptionalProperty-AccessMemory-AccessDuringExecution>No</DebuggerProperty-OptionalProperty-AccessMemory-AccessDuringExecution>
+      <DebuggerProperty-OptionalProperty-AccessMemory-AccessDuringExecution>Yes</DebuggerProperty-OptionalProperty-AccessMemory-AccessDuringExecution>
       <DebuggerProperty-OptionalProperty-AccessMemory-UpdateDisplayInExecution>Yes</DebuggerProperty-OptionalProperty-AccessMemory-UpdateDisplayInExecution>
-      <DebuggerProperty-OptionalProperty-AccessMemory-UpdateInterval>500</DebuggerProperty-OptionalProperty-AccessMemory-UpdateInterval>
+      <DebuggerProperty-OptionalProperty-AccessMemory-UpdateInterval>100</DebuggerProperty-OptionalProperty-AccessMemory-UpdateInterval>
       <DebuggerProperty-OptionalProperty-EventSetting-PermitToStopAndSetEvent>No</DebuggerProperty-OptionalProperty-EventSetting-PermitToStopAndSetEvent>
       <DebuggerProperty-OptionalProperty-ResetSetting-UseForceReset>False</DebuggerProperty-OptionalProperty-ResetSetting-UseForceReset>
       <DebuggerProperty-OptionalProperty-Break-UseSoftwareBreak>No</DebuggerProperty-OptionalProperty-Break-UseSoftwareBreak>

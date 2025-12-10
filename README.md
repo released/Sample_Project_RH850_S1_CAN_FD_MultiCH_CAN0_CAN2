@@ -42,6 +42,8 @@ void can_channel_error_probe_after_init(void)
 
 2. error flag test condition : test channel 2 with PCAN , __SHORT CAN BUS CHANNEL 2 (ex : by tweezers)__
 
+when attempt to send CAN frame ( ex : digit 5)
+
 if enable polling log about dump register (CxCTR,CxSTS,CxERFL)
 
 ![image](https://github.com/released/Sample_Project_RH850_S1_CAN_FD_MultiCH_CAN0_CAN2/blob/main/bus_err_ch2_1.jpg)

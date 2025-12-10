@@ -55,6 +55,8 @@ if disable polling log about dump register (CxCTR,CxSTS,CxERFL) , only display e
 
 3. error flag test condition : test channel 1 , __without connect to any CAN BUS device__
 
+when attempt to send CAN frame ( ex : digit 1)
+
 if enable polling log about dump register (CxCTR,CxSTS,CxERFL)
 
 ![image](https://github.com/released/Sample_Project_RH850_S1_CAN_FD_MultiCH_CAN0_CAN2/blob/main/bus_err_ch0_1.jpg)
